@@ -160,7 +160,7 @@
 
 #### A Prolegomena in Regards to Terminology:
 
-* `_Classes_` are denoted by the plural. `_Objects_` that are instances of a given class are refered to by the singular. In that way, `Targets` is the class
+* _`Classes`_ are denoted by the plural. _`Objects`_ that are instances of a given class are refered to by the singular. In that way, `Targets` is the class
 of the `Target` objects; a _Requester_ object belongs to the category ("class") of _the Requesters_.
 
 #### Spatula's General Architecture:
