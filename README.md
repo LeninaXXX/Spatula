@@ -160,12 +160,28 @@
 
 #### A Prolegomena in Regards to Terminology:
 
-* `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
+ * `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
 of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("class") of _the `Requesters`_.
 
+ * A comment in what in here constitutes a DataSource:
+	A DataSource can be thought of as simply something that exposes a _flow of data_, an indeterminate I/O entity to which we need to interface. A DataSource could be taking information from a variety of sources, or taking information to, a variety of sources, and the only thing that's of interest to us, is that such DataSource gives/takes data.
+	Such an entity has a way of being accessed that we cannot in general know in advance, particularly not from the point of view of the code.
+	In order to clarify this, some examples might come in hand:
+	 * Files: what constitutes de DataSource in this case _is not_ *the file* itself, but it's interface. We're never dealing with a file "directly" (we always do that in accordance to an interface. Even if we're not in Python, we access files as abstractions provided by some layer above which we operate and with which we interact. E.g: objects/methods exposed by the built-ins of Python's runtime, SysCalls to the Operating System, you name it...). It's that interface the thing that we conceive as *A DataSource*.
+	 
+	 * Directories: a directory can be conceptualized as a DataSource that provides, for example, file after file as its data. Or, given that 
+	 	 	 
+	 * A Module, method call, or fields exposed by an object: As such, a module (like a Python module) might expose an interface to an underlying "service". The module itself could be thought as a DataSource that provides data when queried to do so. In general such module is of more interest to be employed as an intermediary to abstract some other sources, but conceptually
+	 
+	 * A DataBase: DataBases are a major concern for the project in its present state and they represent a major DataSource with which to deal. Interfaces to such entities are usually provided as modules with a set of calls that 'do stuff'. Differences among the variety of existing databases are usually exposed as differences in the interface that the interface modules provide. These differences arise from factors like:
+		* The database paradigm in question, e.g.: RDMS vs Document-oriented 
+	 
+	
 #### Spatula's General Architecture:
 
-* Targets Class/Target Objects
+ * `Targets` Class/`Target` Objects : The `Targets` class aims to abstract the peculiarities that appear in the access of different DataSources; its subclasses are meant to articulate this abstractions. Each DataSource has characteristics that are amenable to be abstracted in an uniform way.
+For example:
+ * Some DataSources lend themselves to be treated as an iterable entity (IterTarget), for example, an API source for which the interface exposes
 
 
 ```
