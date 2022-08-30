@@ -1,6 +1,6 @@
 ## Spatula -- A New, Extended Architecture, for General Purpose Scrapping
 
-        
+```
         DataSource/DataSink  DataSource/DataSink              DataSource/DataSink                 DataSource/DataSink
         of Type 0            of Type 1                ...     of Type i                  ...      of Type (n-1)
         
@@ -156,7 +156,7 @@
                                                                 \.................../    |        /   |                |>-------------------+
                                                                  \................./     +-------+    +----------------+
                                                                   +---------------+    
-
+```
     #### A Prolegomena in Regards to Terminology:
 	
 	* _Classes_ are denoted by the plural. _Objects_ that are instances of classes are refered to by the singular. In that way, _*Targets*_ is the class of the
@@ -165,11 +165,8 @@
 	#### Spatula's General Architecture:
 	
 	* Targets Class/Target Objects
-		
-	
-	
 
-
+```
                               |   |     |     |                                                                                   ||     |     |
                               |   |     |     |                                                                                   ||     |     |
                               |   |     |     |              +-------+                                                            ||     |     |
@@ -185,7 +182,7 @@
                                                             |Request  +                                  |                |    .               |
                                                             |        /                                   |                |>-------------------+
                                                             +-------+                                    +----------------+
-                                                                       
+```                                                                       
 
                             Example 1: A single Requester object (Instance of the superclass Requester via its subclasses) can operate  
                             multiple Target objects (Instances of the superclass Targets via its subclasses) to build a Request (of the
