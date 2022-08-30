@@ -186,6 +186,7 @@ of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("clas
                                                             +-------+                                    +----------------+
 ```                                                                       
 
+```
 *Example 1*: A single Requester object (Instance of the superclass Requester via its subclasses) can operate  
 multiple Target objects (Instances of the superclass Targets via its subclasses) to build a Request (of the
 superclass Requests, via its subclasses), when queried to do so. 
@@ -208,3 +209,4 @@ instance (A Response object, in particular, belonging i.e.: to Responses's subcl
 whose subclasses abstract in an homogeneous way, those aspects of the Target interface that are peculiar to
 real-time, open-ended, DataSources. Such 
 Finite indefinite Responses, let's say, modeled with a subclass of BoundedResponses
+```
