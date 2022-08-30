@@ -1,5 +1,5 @@
 ## Spatula -- A New, Extended Architecture, for General Purpose Scrapping
-##
+
         
         DataSource/DataSink  DataSource/DataSink              DataSource/DataSink                 DataSource/DataSink
         of Type 0            of Type 1                ...     of Type i                  ...      of Type (n-1)
