@@ -1,1 +1,2 @@
-## Spatula -- A New, Extended Architecture, for General Purpose Scrapping
+Spatula -- A New, Extended Architecture, for General Purpose Scrapping
+======================================================================
