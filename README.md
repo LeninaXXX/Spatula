@@ -164,7 +164,7 @@
 of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("class") of _the `Requesters`_.
 
  * A comment in what in here constitutes a DataSource:
-	A DataSource can be thought of as simply something that exposes a _flow of data_, an indeterminate I/O entity to which we need to interface. A DataSource could be taking information from a variety of sources, or taking information to, a variety of sources, and the only thing that's of interest to us, is that such DataSource gives/takes data.
+A DataSource can be thought of as simply something that exposes a _flow of data_, an indeterminate I/O entity (from the point of view of the project) to which we want to interface. A DataSource could be taking information from, or bringing information to, a variety of sources, and the only thing that's of interest to us, is that such DataSource gives/takes data.
 	Such an entity has a way of being accessed that we cannot in general know in advance, particularly not from the point of view of the code.
 	In order to clarify this, some examples might come in hand:
 	 * Files: what constitutes de DataSource in this case _is not_ *the file* itself, but it's interface. We're never dealing with a file "directly" (we always do that in accordance to an interface. Even if we're not in Python, we access files as abstractions provided by some layer above which we operate and with which we interact. E.g: objects/methods exposed by the built-ins of Python's runtime, SysCalls to the Operating System, you name it...). It's that interface the thing that we conceive as *A DataSource*.
