@@ -157,14 +157,16 @@
                                                                  \................./     +-------+    +----------------+
                                                                   +---------------+    
 ```
-    #### A Prolegomena in Regards to Terminology:
-	
-	* _Classes_ are denoted by the plural. _Objects_ that are instances of classes are refered to by the singular. In that way, _*Targets*_ is the class of the
-	_*Target*_ objects.
-    
-	#### Spatula's General Architecture:
-	
-	* Targets Class/Target Objects
+
+#### A Prolegomena in Regards to Terminology:
+
+* _Classes_ are denoted by the plural. _Objects_ that are instances of classes are refered to by the singular. In that way, _*Targets*_ is the class of the
+_*Target*_ objects.
+
+#### Spatula's General Architecture:
+
+* Targets Class/Target Objects
+
 
 ```
                               |   |     |     |                                                                                   ||     |     |
