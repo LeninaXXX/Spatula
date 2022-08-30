@@ -186,25 +186,25 @@ of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("clas
                                                             +-------+                                    +----------------+
 ```                                                                       
 
-                            Example 1: A single Requester object (Instance of the superclass Requester via its subclasses) can operate  
-                            multiple Target objects (Instances of the superclass Targets via its subclasses) to build a Request (of the
-                            superclass Requests, via its subclasses), when queried to do so. 
-                            The different Targets subclasses expose uniform interfaces across comparable DataSources, seeking to 
-                            abstract comparable characteristics (Format, behavior, interface, etc). For example, some Targets might be 
-                            single-shot readable, like a FileTarget, or an HTTPTarget, or amenable to iterability, let's say, a 
-                            DirectoryTarget. Such abstraction would allow, for example, to return an iterable response which iterates 
-                            over the files on such a directory, giving access to them as FileResponse objects. While Targets abstracts 
-                            DataSource interfaces (what differentiates, let's say, accessing a TextFileTarget from accessing an 
-                            HTTPTarget, Responses abstract the responses of such DataSources. 
-                            This approach allows for maximum flexibility. 
-                            For example, a live IRC chat (or any other for that matter) could be abstracted as a Target (e.g.: 
-                            IRCTarget) which, for example, returns TextResponse objects as unbounded infinite iterable ContainerResponse
-                            objects, themselves Responses (but with an iterable interface, particular to IRCTarget's IterableResponses) 
-                            that, when iterated, might yield individual lines of text corresponding to an IRC server traffic. Such a 
-                            traffic is better modeled as unbounded given the nature of the DataSource (i.e.: people just chat 
-                            indefinitely). This infinite unbounded iterability of the Response object returned by a given Target 
-                            instance (A Response object, in particular, belonging i.e.: to Responses's subclass UnboundedResponses).
-                            , allows for the management of RealTimeTargets. RealTimeTargets could naturally be a superclass
-                            whose subclasses abstract in an homogeneous way, those aspects of the Target interface that are peculiar to
-                            real-time, open-ended, DataSources. Such 
-                            Finite indefinite Responses, let's say, modeled with a subclass of BoundedResponses
+*Example 1*: A single Requester object (Instance of the superclass Requester via its subclasses) can operate  
+multiple Target objects (Instances of the superclass Targets via its subclasses) to build a Request (of the
+superclass Requests, via its subclasses), when queried to do so. 
+The different Targets subclasses expose uniform interfaces across comparable DataSources, seeking to 
+abstract comparable characteristics (Format, behavior, interface, etc). For example, some Targets might be 
+single-shot readable, like a FileTarget, or an HTTPTarget, or amenable to iterability, let's say, a 
+DirectoryTarget. Such abstraction would allow, for example, to return an iterable response which iterates 
+over the files on such a directory, giving access to them as FileResponse objects. While Targets abstracts 
+DataSource interfaces (what differentiates, let's say, accessing a TextFileTarget from accessing an 
+HTTPTarget, Responses abstract the responses of such DataSources. 
+This approach allows for maximum flexibility. 
+For example, a live IRC chat (or any other for that matter) could be abstracted as a Target (e.g.: 
+IRCTarget) which, for example, returns TextResponse objects as unbounded infinite iterable ContainerResponse
+objects, themselves Responses (but with an iterable interface, particular to IRCTarget's IterableResponses) 
+that, when iterated, might yield individual lines of text corresponding to an IRC server traffic. Such a 
+traffic is better modeled as unbounded given the nature of the DataSource (i.e.: people just chat 
+indefinitely). This infinite unbounded iterability of the Response object returned by a given Target 
+instance (A Response object, in particular, belonging i.e.: to Responses's subclass UnboundedResponses).
+, allows for the management of RealTimeTargets. RealTimeTargets could naturally be a superclass
+whose subclasses abstract in an homogeneous way, those aspects of the Target interface that are peculiar to
+real-time, open-ended, DataSources. Such 
+Finite indefinite Responses, let's say, modeled with a subclass of BoundedResponses
