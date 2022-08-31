@@ -160,7 +160,7 @@
 
 ### Prolegomena in Regards to Terminology:
 
-* `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
+`Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
 of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("class") of _the `Requesters`_.
 
 #### A comment regarding what constitutes a DataSource:
@@ -191,14 +191,24 @@ Now, let's get a little wild:
 	 
 * **Audio, Video or Audio/Video File:** Audio could be thought of as a series of samples, or a series of blocks containing samples. Video could be likewise be thought of as a stream of frames.
 	 
-* **Audio, Video or Audio/Video Stream:** Idem but with differences. While an audio/video source from a file by nature has a beginning and an end, a stream not necessarily share this characteristic. The reason to make this distinction will become clear later.
+* **Audio, Video or Audio/Video Stream:** Idem but with differences. While an audio/video source from a file by nature has a beginning and an end, a stream not necessarily share this characteristic. The reason to make this distinction will become clear later. A continuous broadcast could fall into this category. 
 
-To summarize: A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in others. In order to maximize the flexibility of the design, abstracting those similarities 
-	
+To summarize: A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in other regards. In order to maximize the flexibility and generality of the design, the similarities are going to be abstracted as a class/classes with a uniform interface(s), while the differences are to be captured by subclassing that/those superclass(es).
+
+Some characteristics that come into mind when considering some random DataSources:
+
+* *"Single-Shot"*: A DataSource that, when queried for data, *"gives a whole Response and 'finishes'"*.
+* *Iterability*: Data could be repeatedly queried to the DataSource, yielding Response after Response.
+* *Boundedness*: *Boundedness* has to do with the extension of the data being retrieved (being *responded by* the DataSource in question)
+	* *Bounded*:
+	* *Unbounded*:
+* *"Real-Time"*:
+* *Cacheability*:
+
 #### Spatula's General Architecture:
 
  * `Targets` Class/`Target` Objects : The `Targets` class aims to abstract the peculiarities that appear in the access of different DataSources; its subclasses are meant to articulate this abstractions. Each DataSource has characteristics that are amenable to be abstracted in an uniform way.
-For example:
+
  * Some DataSources lend themselves to be treated as an iterable entity (IterTarget), for example, an API source for which the interface exposes
 
 
