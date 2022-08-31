@@ -1,6 +1,6 @@
 ## Spatula -- A New, Extended Architecture, for General Purpose Scrapping
 
-<span style = "font-family:'Courier New', monospace; font-size:3em;">
+<span style = "font-family:'Courier New', monospace; font-size:1em;">
 
 ```
         DataSource/DataSink  DataSource/DataSink              DataSource/DataSink                 DataSource/DataSink
