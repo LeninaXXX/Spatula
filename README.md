@@ -1,5 +1,6 @@
 ## Spatula -- A New, Extended Architecture, for General Purpose Scrapping
 
+<span style = "font-family:Lucida; font-size:3em;">
 ```
         DataSource/DataSink  DataSource/DataSink              DataSource/DataSink                 DataSource/DataSink
         of Type 0            of Type 1                ...     of Type i                  ...      of Type (n-1)
@@ -157,7 +158,7 @@
                                                                  \................./     +-------+    +----------------+
                                                                   +---------------+    
 ```
-
+</span>
 ### Prolegomena in Regards to Terminology:
 
 `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
