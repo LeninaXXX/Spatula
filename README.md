@@ -160,7 +160,7 @@
 
 ### Prolegomena in Regards to Terminology:
 
- * `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
+* `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
 of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("class") of _the `Requesters`_.
 
 #### A comment regarding what constitutes a DataSource:
