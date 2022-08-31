@@ -197,7 +197,8 @@ Now, let's get a little wild:
 	 
 * **Audio, Video or Audio/Video Stream:** Idem but with differences. While an audio/video source from a file by nature has a beginning and an end, a stream not necessarily share this characteristic. The reason to make this distinction will become clear later. A continuous broadcast could fall into this category. 
 
-To summarize: A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in other regards. In order to maximize the flexibility and generality of the design, the similarities are going to be abstracted as a class/classes with a uniform interface(s), while the differences are to be captured by subclassing that/those superclass(es).
+To summarize :
+A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in other regards. In order to maximize the flexibility and generality of the design, the similarities are going to be abstracted as a class/classes with a uniform interface(s), while the differences are to be captured by subclassing that/those superclass(es).
 
 Some characteristics that come into mind when considering some random DataSources:
 
