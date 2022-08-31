@@ -44,7 +44,7 @@
           | +--------+         | |   |Response_0  |   |         | |    |Response_0  |    |          | |   |Response_0  |   |   ||     |     |
           |                    | |   |            +   |         | |    |            +    |          | |   |            +   |   ||     |     |    
           | A singular         | |   |           /    |         | |    |           /     |          | |   |           /    |   ||     |     |    
-          | response.          | |   +----------+     |         | |    +----------+      |          | |   +----------+     |   ||     |     |
+          | Response.          | |   +----------+     |         | |    +----------+      |          | |   +----------+     |   ||     |     |
           |                    | |                    |         | |                      |          | |                    |   ||     |     |
           |                    | |   +------------+   |         | |    +------------+    |          | |   +------------+   |   ||     |     |
           |                    | |   |Response_1  |   +         | |    |Response_1  |    |          | |   |Response_1  |   |   ||     |     |
@@ -54,13 +54,13 @@
           |                    | |                /             | |                      |          | |                    |   ||     |     |
           |                    | +---------------+              | |           .          |          | |          .         |   ||     |     |
           |                    |                                | |           .          |          | |          .         |   ||     |     |
-          |                    |  Finite, definite (its         | |           .          |          | |          .         |   ||     |     |
-          |                    |  size is known ahead of        | |                      |          | |                    |   ||     |     |
-          |                    |  time), and iterable set       | |    +------------+    |          | |   +------------+   |   ||     |     |
-          |                    |  of Response objects           | |    |Response_i  |    |          | |   |Response_i  |   |   || ... | ... |
-          |                    |  contained in a Response,      | |    |            +    |          | |   |            +   |   ||     |     |
-          |                    |  an iterable                   | |    |           /     |          | |   |           /    |   ||     |     |
-          |                    |  ContainerResponse object.     | |    +----------+      |          | |   +----------+     |   ||     |     |
+          |                    | Finite, bounded (its size is   | |           .          |          | |          .         |   ||     |     |
+          |                    | known  ahead of  time),  and   | |                      |          | |                    |   ||     |     |
+          |                    | iterable  set  of   Response   | |    +------------+    |          | |   +------------+   |   ||     |     |
+          |                    | objects   contained   in   a   | |    |Response_i  |    |          | |   |Response_i  |   |   || ... | ... |
+          |                    | Response,    an     iterable   | |    |            +    |          | |   |            +   |   ||     |     |
+          |                    | ContainerResponse object.      | |    |           /     |          | |   |           /    |   ||     |     |
+          |                    |                                | |    +----------+      |          | |   +----------+     |   ||     |     |
           |                    |                                | |                      |          | |                    |   ||     |     |
           |                    |                                | |           .          |          | |          .         |   ||     |     |
           |                    |                                | |           .          |          | |          .         +   ||     |     |
@@ -75,10 +75,10 @@
           |                    |                                | +------------------+              | ContainerResponse.       ||     |     |
           |                    |                                |                                   |                          ||     |     |
           |                    |                                |                                   |                          ||     |     |
-          |                    |                                | Finite, indefinite, and           |                          ||     |     |
-          |                    |                                | iterable set of Response          |                          ||     |     |
-          |                    |                                | objects contained in iterable     |                          ||     |     |
-          |                    |                                | ContainerResponse object.         |                          ||     |     |
+          |                    |                                | Finite,  unbounded, and  iterable |                          ||     |     |
+          |                    |                                | set of Response objects contained |                          ||     |     |
+          |                    |                                | in   iterable   ContainerResponse |                          ||     |     |
+          |                    |                                | object.                           |                          ||     |     |
           |                    |     +--------------------------+                                   |                          ||     |     |
           |                    |     |                                                              |                          ||     |     |
           +----------------+   |     |     +--------------------------------------------------------+                          ||     |     |
@@ -198,16 +198,24 @@ Now, let's get a little wild:
 * **Audio, Video or Audio/Video Stream:** Idem but with differences. While an audio/video source from a file by nature has a beginning and an end, a stream not necessarily share this characteristic. The reason to make this distinction will become clear later. A continuous broadcast could fall into this category. 
 
 #### To summarize :
- A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in other regards. In order to maximize the flexibility and generality of the design, the similarities are going to be abstracted as a class/classes with a uniform interface(s), while the differences are to be captured by subclassing that/those superclass(es).
+ A DataSource is a source of information in the *widest sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in other regards. In order to maximize the flexibility and generality of the design, the similarities are going to be abstracted as a class/classes with a uniform interface(s), while the differences are to be captured by subclassing that/those superclass(es).
 
 Some characteristics that come into mind when considering some random DataSources:
 
 * *"Single-Shot"*: A DataSource that, when queried for data, *"gives a whole Response and 'finishes'"*.
+
 * *Iterability*: Data could be repeatedly queried to the DataSource, yielding Response after Response.
-* *Boundedness*: *Boundedness* has to do with the extension of the data being retrieved (being *responded by* the DataSource in question)
-	* *Bounded*:
-	* *Unbounded*:
+
+	* *Boundedness*: **Boundedness** has to do with the extension of the data being retrieved (being *responded by* the DataSource in question) and how this is defined
+		* *Bounded*: It's data that, in layman's terms, *we know it 'ends' at the moment we query for it*
+		* *Unbounded*: 
+
+	* *Finiteness*:
+		* *Finite*:
+		* *Infinite*:
+
 * *"Real-Time"*:
+
 * *Cacheability*:
 
 #### Spatula's General Architecture:
