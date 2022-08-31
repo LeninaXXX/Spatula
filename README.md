@@ -2,7 +2,7 @@
 
 <span style = "font-family:'Courier New', monospace; font-size:7pt;">
 
-```
+
         DataSource/DataSink  DataSource/DataSink              DataSource/DataSink                 DataSource/DataSink
         of Type 0            of Type 1                ...     of Type i                  ...      of Type (n-1)
         
@@ -158,7 +158,7 @@
                                                                 \.................../    |        /   |                |>-------------------+
                                                                  \................./     +-------+    +----------------+
                                                                   +---------------+    
-```
+
 
 </span>
 
