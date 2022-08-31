@@ -158,24 +158,41 @@
                                                                   +---------------+    
 ```
 
-#### A Prolegomena in Regards to Terminology:
+### Prolegomena in Regards to Terminology:
 
  * `Classes` are denoted by the plural. `Objects` that are instances of a given class are refered to by the singular. In that way, _`Targets`_ is the class
 of the _`Target`_ objects; a _`Requester`_ object belongs to the category ("class") of _the `Requesters`_.
 
- * A comment in what in here constitutes a DataSource:
-A DataSource can be thought of as simply something that exposes a _flow of data_, an indeterminate I/O entity (from the point of view of the project) to which we want to interface. A DataSource could be taking information from, or bringing information to, a variety of sources, and the only thing that's of interest to us, is that such DataSource gives/takes data.
+#### A comment regarding what constitutes a DataSource:
+A DataSource can be thought of as something that exposes a _flow of data_, an indeterminate I/O entity (from the point of view of the project) to which we want to interface. A DataSource could be taking information from, or bringing information to, potentially any kind of source, and the only thing that's of interest to us is that such DataSource gives/takes data.
 	Such an entity has a way of being accessed that we cannot in general know in advance, particularly not from the point of view of the code.
-	In order to clarify this, some examples might come in hand:
-	 * Files: what constitutes de DataSource in this case _is not_ *the file* itself, but it's interface. We're never dealing with a file "directly" (we always do that in accordance to an interface. Even if we're not in Python, we access files as abstractions provided by some layer above which we operate and with which we interact. E.g: objects/methods exposed by the built-ins of Python's runtime, SysCalls to the Operating System, you name it...). It's that interface the thing that we conceive as *A DataSource*.
+	In order to clarify this, some examples of what might constitute a DataSource might come in hand:
+	
+	 * Files: what constitutes the DataSource in this case _is not_ *the file* itself, but it's interface. We're never dealing with a file "directly", we always do that in accordance to, and through, an interface. Even if we're not in Python, we access files as abstractions provided by some layer above which we operate and with which we interact. E.g: objects/methods exposed by the built-ins of Python's runtime, SysCalls to the Operating System, you name it...). It's that interface the thing that we conceive as *A DataSource*.
 	 
-	 * Directories: a directory can be conceptualized as a DataSource that provides, for example, file after file as its data. Or, given that 
+	 * Directories: if a Directory is conceptualized as a "container" that holds a set of files and maybe other directories "inside" of it, a directory can be conceptualized as a DataSource that provides, for example, file after file as its data. In turn, each such files, could be thought of as a DataSource each one. Directories share some common characteristics with files (e.g.: they "contain" something) while in other regards, they're fundamentally different: while a file might, for example, give or take lines of text for which an order is guaranteed, a directory would deal with a collection of files/other directories, for which an order is by no means guaranteed.
 	 	 	 
 	 * A Module, method call, or fields exposed by an object: As such, a module (like a Python module) might expose an interface to an underlying "service". The module itself could be thought as a DataSource that provides data when queried to do so. In general such module is of more interest to be employed as an intermediary to abstract some other sources, but conceptually
 	 
-	 * A DataBase: DataBases are a major concern for the project in its present state and they represent a major DataSource with which to deal. Interfaces to such entities are usually provided as modules with a set of calls that 'do stuff'. Differences among the variety of existing databases are usually exposed as differences in the interface that the interface modules provide. These differences arise from factors like:
-		* The database paradigm in question, e.g.: RDMS vs Document-oriented 
+	 * A DataBase: DataBases are a major concern for this project in its present state and they represent a major DataSource with which to deal. Interfaces to such entities are usually provided as modules with a set of methods that 'do stuff'. Differences among the variety of existing databases are usually exposed as differences in the interface that the interface modules provide. These differences arise from factors like:
+		* The database paradigm in question, e.g.: RDMS vs Document-oriented vs 
+		* The vendor: different vendors do provide or might provide variations in the bells-and-whistles of their products, even for a given paradigm or standard (e.g.: MySQL vs MS SQLServer vs PostreSQL vs etc)
+		
+	 * An API: For example, a REST API accessible through an HTTP connection. Tipically we would be dealing with these entities by means of, again, 'canned' modules that are provided by a third-party. While in effect we're dealing with a module, what we're interested in is in what the API provides and for which a module is a mere means for that end.
 	 
+	 * An HTTP Request: A single HTTP Request could be thought as a DataSource. What such request returns with a GET method, could be thought as the content of a file, and that would be an aspect of this DataSource that has a commonality with a file, for example. Other aspects, nonetheless, are different: if we thing about HTTP's methods as an interface, these are fundamentally different to those of a file. An HTTP connection is referred in a fundamentally different way, with an http:// schema, port, parameters, etc., and, as a DataSource, it deals with fundamentally different entities: essentially, whole documents.
+	 
+	 Now, let's get a little wild:
+	 
+	 * A terminal: As a DataSource, it could be thought of as a stream of characters. The application in question is going to dictate how we abstract such a stream. Are we agnostic to that character stream? Do we differentiate control-characters? Do we interpret a whole terminal control syntax (VT-100, ANSI X3.64, etc.)? How we abstract such access is the competence of the classes in the Targets hierarchy.
+	 
+	 * A serial-port: as a bit stream, byte/n-bit-word stream (RS-232), frame-stream (Ethernet), etc. While a low-level interface, it is perfectly legitimate to think about these in such raw terms, because we're discussing about DataStreams. How we interpret and access this stream, is the competence of the Targets class hierarchy
+	 
+	 * An audio, video or audio/video file: Audio could be thought of as a series of samples, or a series of blocks containing samples. Video could be likewise be thought of as a stream of frames.
+	 
+	 * An audio, video or audio/video stream: Idem but with differences. While an audio/video source from a file by nature has a beginning and an end, a stream not necessarily share this characteristic. The reason to make this distinction will become clear later.
+
+To summarize: A DataSource is a source of information in a *wide sense*, for which we are interested to get access to. Different DataSources share some characteristics, while being different in others. In order to maximize the flexibility of the design, abstracting those similarities 
 	
 #### Spatula's General Architecture:
 
